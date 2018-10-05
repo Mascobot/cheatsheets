@@ -1,0 +1,36 @@
+git init -> It initializes git in the local folder in the computer
+git config --global user.name "Marco" -> It configures git
+git config --global user.email "m@mascobot.com" 
+git clone http://... -> It clones a repository to the local folder in the PC.
+git add . -> Add all changes and files to the local git 
+git commit -m "new changes fixed" -> commits changes to local git and adds the comment 
+git status -> It tells you what branch you are in
+git push origin branchname -> pushes changes to the cloud to the branchname
+git push origin master -> pushes to the master branch 
+git pull -> Pulls request/file from the cloud
+git pull origin master -> Pulls request/fle from the master branch on the cloud 
+git remote add origin http://... -> Adds git to local folder from the origin branch on the link. *It needs to init git in the local folder before. 
+git checkout -b [new branch name] -> It creates a new branch and switched to it automatically 
+git checkout [branch name] -> This is to move between branches 
+git merge [newbranch name] -> merge branch to master branch. *Make sure to be on the master git branch. 
+git log -> Shows a log of the whole history of the changes 
+git log --author=marco -> Shows logs of the username 
+git log --pretty=oneline -> Shows logs in one line description (short version)
+git log -help -> gives all options for log and help 
+
+## Reseting git:
+
+git checkout --[filename] -> brings back last version from the cloud, discards local version.
+git fetch origin -> brings all documents from branch on the cloud, dirregards local files.
+git reset --hard origin/master -> discards all local changes.
+
+## Most common commands:
+
+git init
+git add .
+git commit -m "my first commit"
+git remote add origin http://github... -> remote repository URL
+git remote -v -> Verifies the new remote URL
+git push origin master 
+
+
