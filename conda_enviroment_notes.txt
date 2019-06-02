@@ -1,0 +1,23 @@
+- To create new enviroment:
+conda create --name myenv
+
+- To create new enviroment with a specific version of pythoin
+conda create --name myenv python=3.5
+
+- To activate enviroment:
+conda activate myenv
+
+- To deactivate enviroment:
+conda deactivate
+
+- To list packages installed in the enviroment:
+conda list
+
+- To list all enviroments:
+conda info --envs 
+
+- To install pip in the enviroment:
+conda install -n myenv pip
+
+- To remove an enviroment:
+conda remove --name myenv --all 
