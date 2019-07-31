@@ -24,3 +24,6 @@ conda remove --name myenv --all
 
 - To export requirements.txt file:
 conda list -e > requirements.txt
+
+- To create a new enviroment with an existing requirements file:
+conda create -n new environment --file requirements.txt
