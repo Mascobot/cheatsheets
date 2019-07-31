@@ -2,7 +2,7 @@
 conda create --name myenv
 
 - To create new enviroment with a specific version of pythoin
-conda create --name myenv python=3.5
+conda create --name myenv python=3.7.3
 
 - To activate enviroment:
 conda activate myenv
