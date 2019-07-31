@@ -1,7 +1,7 @@
 - To create new enviroment:
 conda create --name myenv
 
-- To create new enviroment with a specific version of pythoin
+- To create new enviroment with a specific version of python
 conda create --name myenv python=3.7.3
 
 - To activate enviroment:
@@ -21,3 +21,6 @@ conda install -n myenv pip
 
 - To remove an enviroment:
 conda remove --name myenv --all 
+
+- To export requirements.txt file:
+conda list -e > requirements.txt
