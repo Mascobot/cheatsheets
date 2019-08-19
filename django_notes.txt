@@ -1,0 +1,139 @@
+Create virtual enviroment 
+
+To create a new Django project: django-admin startproject <name_of_project>
+
+To create a new app in the Django project: python manage.py startapp <name_of_app>
+
+Steps:
+
+1. In settings.py we need to declare our newly created app:
+
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'new_app',
+    ]
+
+2. in the views.py add:
+
+    from django.http import HttpResponse 
+    # Create your views here.
+
+    def index(request):
+        return HttpResponse('Hello World!')
+
+3. in urls.py add:
+    from django.conf.urls import url 
+    from inventory_app import views
+
+    urlpatterns = [
+    url(r'^$',views.index, name='index'),
+    path('admin/', admin.site.urls),
+
+    ]
+
+4. Create a templates directory under the MAIN project folder. 
+
+5. In settings.py includ under BASE_DIR variable:
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
+6. In the same settings.py file, inlude the TEMPLATE_DIR into the TEMPLATES settings:
+
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [TEMPLATE_DIR,],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]
+
+
+7. Create a index.html file under the templates folder. 
+
+8. Django insertions can be addded now to the index file:
+        <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Inventory App</title>
+    </head>
+    <body>
+        <h1>Hellow world, this is the Inventory app index.html</h1>
+        {{ insert_me }}
+    </body>
+
+    </html>
+
+9. Include in the views.py file:
+    from django.shortcuts import render
+
+10. Include django insertions in the views.py defined functions:
+    def index(request):
+        my_dict = {'insert_me':"Hello, I am from views.py"}
+        return render (request, 'index.html', context=my_dict)
+
+
+11. Create a new folder under the MAIN project folder called static 
+
+12. Create a new folder inside static folder called images
+
+13. Add the static variable with the location of the static folder into the settings.py file:
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+    STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+14. In the bottom of the settings.py file, add the STATICFILES_DIR dicctionary:
+        STATIC_URL = '/static/'
+        STATICFILES_DIRS = [
+        STATIC_DIR,
+    ]
+
+15. To load static files, in the htlm file after <!DOCTYPE html> include:
+    {% load staticfiles %}
+
+16. To inject static files (images, CSS, JavaScript files, etc) in the html file. Example:
+    <!DOCTYPE html>
+    {% load staticfiles %}
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Inventory App</title>
+    </head>
+    <body>
+        <h1>Hellow world, this is the Inventory app index.html</h1>
+        <h1>I am inserting this static image:</h1>
+        <img src="{% static "images/1.jpg" %}" alt="Image coudn't load">
+    </body>
+
+    </html>
+
+17. To inect a static CSS file, assuming there's a CSS file directory under static folder: 
+    <!DOCTYPE html>
+    {% load staticfiles %}
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Inventory App</title>
+        <link rel="stylesheet" href="{% static "css/mystyle.css" %}"/>
+    </head>
+    <body>
+        <h1>Hellow world, this is the Inventory app index.html</h1>
+        <h1>I am inserting this static image:</h1>
+        <img src="{% static "images/1.jpg" %}" alt="Image coudn't load">
+    </body>
+
+    </html>
+

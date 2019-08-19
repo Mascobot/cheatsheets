@@ -1,0 +1,7 @@
+mkdir DockerComposeFile -> create a new folder
+cd DockerComposeFile
+
+touch docker-compose.yml -> creates the docker compose YAML file 
+
+vi docker-compose.yml -> This is to edit the yaml file 
+
