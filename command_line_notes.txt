@@ -1,0 +1,46 @@
+
+
+Hotkey: ctrl + r    will do a "reverse search on all commands used before in the terminal.
+
+
+1. ls -l      -> This lists all files in the folder with their size and last day of modification
+
+2. mkdir name_of_directory     -> this makes a new directory 
+
+3. mv file_1 name_of_directory     -> this moves the file_1 to the directory with that name. 
+
+4. mv *.png name_of_directory    -> this moves ALL files with the extension .png to the directory with that name. 
+
+5. mv file_1 file_2    -> this changes the name of the file 
+
+6. cp file_1 name_of_directory    ->This copies the file_1 into the directory with the name. 
+
+7. rm file_1   -> This removes files. 
+
+8. rm -r name_of_directory   -> This removes the folder and ALL its contents 
+
+
+Reading files:
+
+1. cat file_1    -> this will read the content of the file and print it in terminal 
+   cat file_1 file_2 file_3    -> This will read the content of ALL files and print them in terminal
+
+2. cat file_1 file_2 file_3 > file_4   -> This will combine the content of the three files and put it in a new file callef file_4
+
+3. cat file_1 file_2 file_3 >> file_4   -> this will concatinate the content to an existing file. (it will add it again)
+
+4. cat file1 | wc -l   -> this will tell how many lines the file has 
+
+5. cat file1 | head -n 2    -> this will pinrt the first 2 lines of the file 
+
+6. cat file1 | tail -n 2    -> this will print the last 2 lines of the file 
+
+7. cat name_of_directory | sort   -> this ill order files alphabetically
+
+8. cat name_of_directory | sort -n    -> this will sort files in number order 
+
+9. cat name_of_directory | sort -n | uniq    -> this will sort files in number order and print just the unique ones. Note that "uniq" can only be used after the command sort 
+
+
+
+
