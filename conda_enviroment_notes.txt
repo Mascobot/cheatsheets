@@ -21,6 +21,8 @@ conda install -n myenv pip
 
 - To remove an enviroment:
 conda remove --name myenv --all 
+OR:
+conda env remove --name myenv
 
 - To export requirements.txt file:
 conda list -e > requirements.txt
