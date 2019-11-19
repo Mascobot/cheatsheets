@@ -1,0 +1,32 @@
+Creating a new React App:
+
+- Install create-react-app from the Facebook repository. It creates and setups a bunch of scripts needed to run React smoothly in browsers. 
+If not installed yet, install npm install -g create-react-app 
+
+- In the directory where you want to locate your React app. This will install React, react-dom and react-scripts (Babble, webpack, webpack dev server, etc)
+On terminal create-react-app <nameofapp>
+
+- Commands:
+
+  npm start
+    Starts the development server.
+
+  npm run build
+    Bundles the app into static files for production.
+
+  npm test
+    Starts the test runner.
+
+  npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+We suggest that you begin by typing:
+
+  cd photowall
+  npm start
+
+
+- Under <appname> in the src folder, dlete all files but index.js
+- Inside index.js, delete all code. This will be our main entry file. 
+

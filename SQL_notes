@@ -1,0 +1,81 @@
+
+##pdAdmin is the GUI fo managind databases. It runs in a browser. 
+
+
+##Select Statements:
+
+SELECT * FROM public.customers -> This selects all from customers
+
+SELECT column_name FROM public.customers -> This selects just the column name and displays it 
+SELECT column_name, column_name_2 FROM public.customer -> This will return both columns. 
+SELECT name, age 
+SELECT public.customers.id, name, age 
+
+## Where Clause (Conditionals)
+
+WHERE id = 2 -> This will retung the ID position 2
+
+WHERE id != 3 -> This will return everything BUT where id equals 3
+
+WHERE id > 3 -> Will return all id's above 3
+
+WHERE name = 'John' -> This will return where its exaclty John. It's not the best way to look for chars, as there might be multiple Johns. See Wildcards. 
+
+
+## Wildcards (%)
+
+WHERE name LIKE "John%" -> This means it will reaturn anything that starts with John
+
+WHERE name LIKE "%Smith" -> This means it will return anything that ends with Simith
+
+WHERE name LIKE "%hn%" -> This will mean anythin that has hn
+
+WHERE name LIKE "%@%" -> This will return anything with an a @ in-between.
+
+## AND or NOT  
+
+WHERE email LIKE "%Smith%" AND id = 4 
+
+WHERE email LIKE "%Smith%" OR id = 4 
+
+WHERE NOT email LIKE "%Smith%" -> This will return everything that doesn't have Smith. 
+
+## Order By
+
+ORDER BY name ASC -> This will order the data ascending 
+
+ORDER BY name DESC -> This will order the data descending. 
+
+ORDER BY id ASC
+
+ORDER BY column_name ASC
+
+
+## Insert Into (To add to the DB)
+
+INSERT INTO public."table_name_here"("name", "email")
+VALUES ('Luis', 'luis@gmail.com')
+
+## Update data
+
+UPDATE public.customers
+SET name = "New Updated name"
+WHERE id = 6 -> This line is very important. If it's not there, it will update the entire DB
+
+## Delete data
+
+DELETE FROM public.customers 
+WHERE id = 6
+
+## Limit
+
+SELECT * FROM public.customers 
+LIMIT 2 -> This will limit the entire DB and just show the fist two items
+
+LIMIT 2 OFFSET 3 -> This will limit 2 and will skip the first 3
+
+## Inner join:
+SELECT name, age -> this seelects what you want to see in your merge report 
+FROM public.main_db -> This is the main table 
+INNER JOIN public.secondary_db ON public.secondary_db.customer_id = public.main_db.customer.id -> This will merge the secondary DB into the main one useind the foreging key (coomin key), in this case bieng customers.id
+
