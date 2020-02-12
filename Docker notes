@@ -1,3 +1,28 @@
+On terminal:
+
+docker ps -a   -> Will list all docker containers in computer. 
+docker run <image name>  -> it will run the image name and create a containder with a random name from that image
+docker run --name <personal name of container> <image name>   -> Create new container with personal/custom name from image name
+docker run -it --name <my-custom-name-container> <image name> bash  -> Go inside the container with bash after running docker container
+
+docker images  -> this shows all docker images downloaded in computer 
+
+docker rm $(docker ps -a -f status=exited -q) -> delete all exited containers
+
+To build a custom docker image, Create a file called Dockerfile:
+
+In Dockerfile:
+
+FROM ubuntu
+RUN apt-get upgrade && apt-get update && apt-get install -y python3
+
+Terminal:
+docker build -t my-cutom-image-name .  -> this will create an image from that Dockerfile
+
+
+
+
+
 mkdir DockerComposeFile -> create a new folder
 cd DockerComposeFile
 
