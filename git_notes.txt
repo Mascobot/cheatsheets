@@ -1,6 +1,6 @@
 git init -> It initializes git in the local folder in the computer
 git config --global user.name "Marco" -> It configures git
-git config --global user.email "m@mascobot.com" 
+git config --global user.email 
 git clone http://... -> It clones a repository to the local folder in the PC.
 git add . -> Add all changes and files to the local git 
 git commit -m "new changes fixed" -> commits changes to local git and adds the comment 
@@ -32,5 +32,4 @@ git commit -m "my first commit"
 git remote add origin http://github... -> remote repository URL
 git remote -v -> Verifies the new remote URL
 git push origin master 
-
-
+git status  -> Returns a list of files in the local project
