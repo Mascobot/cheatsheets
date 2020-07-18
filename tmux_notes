@@ -26,39 +26,42 @@ sudo apt-get install tmux
     OR:
 
     tmux attach -t <name_of_session>
+    
+5. To detach from a session:
+    tmux detach
 
-5. To split windows:
+6. To split windows:
 
     tmux split-window
     tmux split-window -h  -> This splits the windows horizontally
 
-6. To switch sessions:
+7. To switch sessions:
     
     tmux switch -t <session_name>
 
-7. Create new window:
+8. Create new window:
 
     tmux new-window
 
-8. Move to the window based on index:
+9. Move to the window based on index:
 
     tmux select-window -t :0-9
 
-9. Rename window:
+10. Rename window:
 
     tmux rename-window
 
 
-10. To kill ALL tmux sessions and server:
+11. To kill ALL tmux sessions and server:
 
     tmux kill-server 
 
-11. If you are inside a tmux session you would like to keep, and want to close all other sessions:
+12. If you are inside a tmux session you would like to keep, and want to close all other sessions:
 
     use tmux kill-session -a
 
 
-12. To close a specific session, use tmux list-sessions to identify the session you want to kill, and then use tmux kill-session -t targetSession to kill that specific session.    
+13. To close a specific session, use tmux list-sessions to identify the session you want to kill, and then use tmux kill-session -t targetSession to kill that specific session.    
 
     tmux list-sessions OR tmux ls
 
