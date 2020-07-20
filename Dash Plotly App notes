@@ -1,0 +1,32 @@
+Dash Plotly notes:
+
+Dashh app have three main pilars to work:
+
+1. Dash components:
+    Slider, checkbox, day picker, dropdown, etc. 
+    Dash components dive in two: Dash core components and Dash HTML components.
+
+2. Plotly graphs:
+    Graphs charts, etc.
+    Mapbox, scatter plot, line chart, bar chart, etc.
+
+3. The callback:
+    It connects the Dash components and the Plotly graphs to create an interactive capability.
+
+
+The Dash components and the Plotly graphs go inside the app layout, while the callback goes outside.
+
+4. Right bellow the app callback, a function needs to be added with an arbitrary name and it will be linked to that call back function. 
+The number inputs in the callback will be the number of varibales passed to the function. The number of elements returned from the fucntion will be the number 
+number of outputs of the callback. 
+
+5. Filter data frame with common pandas techniques. Note that is good practice to create a copy of the Dataframe inside of the function to avoid modifying 
+the data in the original dataframe. dff = df.copy()
+
+6. Plotly express is to create the graph once the data fram was filtered. 
+
+7. Important note, if there's just one output in the app.callback, do not output it in a list (remove the bracktes). 
+
+Notes:
+
+There are two types of graphs, Plotly Exrpess (px) and Plotly Graph Objects (go). Plotly express is newer and easier. 

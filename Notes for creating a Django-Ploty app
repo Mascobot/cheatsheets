@@ -1,0 +1,248 @@
+Notes for creating a Django-Plotly-Dash app:
+- Have django_plotly_dash installed: pip install django_plotly_dash. Current version tested: 1.4.2
+- Install: pip install channels daphne redis django-redis channels-redis
+- Have django installed. Current version tested 3.0.8
+- All documentation here will reference that the app name created in Django is "app_one". Change name where necessary.
+
+1. Create django app: python manage.py startapp <app_one>
+2. Inside the project template folder, create a 'base.html' file 
+3. Inside the app folder create a templates folder
+4. Create another folder called <app_one> inside the templates folder of the app folder 
+5. Create an "welcome.html" files inside the <app_name> template folder. Insert a h1 title like "Home Page". This will be the html file to load the plotly graphs. 
+6. Inside the app folder add urls.py file for the app urls. This urls will tgen be mapped to the project urls file:
+
+    from django.urls import path
+    from . import views
+    
+
+    urlpatterns = [
+    path('', views.home, name='home')
+        ]
+
+
+7. In the views file, add a path to the welcome.html file:
+
+    def home(requests):
+    return render(requests, 'app_one/welcome.html') 
+
+8. In the settings file, insert in the end of the INSTALLED APPS list:
+    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
+    'channels',
+    'channels_redis',
+    'app_one.apps.AppOneConfig',
+
+9. In the project urls.py file, add the "include" library, and add the paths to map to the app urls.py file and the django_plotly_dash:
+
+    from django.urls import path, include
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', include('app_one.urls')),#This routes to the app urls individual urls.py file. 
+        path('django_plotly_dash/', include('django_plotly_dash.urls')),#This is to register and route django_plotly_dash apps
+    ]
+10. Get a HTML/CSS/JS theme and it will be added to the project templates folder under the 'base.html' file. The general theme will be
+broken into multiple partial segmenets/html files (topbar, sidebar and footer). Create a 'partials' folder inside the project template folder to have 
+those partial html files that later will be inserted (with django insertions) in the 'base.html' file. 
+- Generally folders to get from the theme: css, scss, images, js, vendor, and the index.html file.
+
+11. Create 'static' folder inside the porject folder. Put all folders from theme inside that folder (css, scss, images, js, vendor).
+
+12. Add the index.html file to the templates folder in the project folder. 
+
+13. To include the 'static' folder just created, go to the bottom of the settings file and add:
+    STATICFILES_LOCATION = 'static'
+    STATIC_URL = '/static/'
+    STATIC_ROOT = 'static'
+    STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'django_dash_project/static')
+    ]
+
+    X_FRAME_OPTIONS = 'SAMEORIGIN' #This is required for the library django_plotly_dash
+
+14. (Optional if you want to use databases like potsgresSQL), add it in the settings file in the DATABASES field.
+
+15. Run python manage.py collectstatic -> This will create a copy of the app 'static' folder (and contents) and put the copy in the main project folder.
+This needs to be used for production apps. You don't add files in the main project static folder but rather into the app folder, and re-run python manage.py collectstatic 
+
+16. Remove sections: sidebar, topbar and footer from the index.html file and add them into the partials folder (_topbar.html, _sidebar.html, _footer.html)
+
+17. Now that the index file has been cleaned up, copy and pate content into the base.html and delete index.html file. 
+
+18. To insert the partial html sections (back) into the base.html file where they belong in their position:
+
+    {% include "partials/_sidebar.html" %}
+    ...
+    {% include "partials/_topbar.html" %}
+    ...
+    {% include "partials/_footer.html" %}
+
+19. To insert the main content to be rendered into the main base.html file, use django insertions:
+    {% block content %}
+
+    {% endblock %}
+
+20. Insert {% load static %} at the very top of the base.html file.
+
+21. To load the static files from the static folder into the html file, replace the ALL html links with the django insertions:
+
+    From: <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    Change to:
+    <link href="{% static "vendor/fontawesome-free/css/all.min.css" %}" rel="stylesheet" type="text/css">
+
+22. In the empty welcome.html file in the app template foder, add:
+    {% extends 'base.html' %}
+    {% load static %}
+
+    {% block content %}
+    {% load plotly_dash %}
+    <h1>Home Page</h1>
+
+    -- DASHH or PLOTLY APPS WILL GO HERE. SEE POINT 26 BELOW --
+
+    {% endblock %}
+
+23. Under project folder create routing.py file and add inside it:
+
+    from channels.routing import ProtocolTypeRouter
+
+    application = ProtocolTypeRouter({
+    
+    })
+
+24. In the settings file, after USE_TZ = True and before the static variables segment, add this:
+
+    MASCOBOT_TEMPLATE_PACK = 'bootstrap4'
+
+    ASGI_APPLICATION = 'django_dash_project.routing.application'
+
+    CHANNEL_LAYERS = {
+        'default': {
+            'BACKEND': 'channels_redis.core.RedisChannelLayer',
+            'CONFIG': {
+                'hosts': [('127.0.0.1', 6379),],
+            },
+        },
+    }
+
+    PLOTLY_DASH = {
+
+        # Route used for the message pipe websocket connection
+        "ws_route" :   "dpd/ws/channel",
+
+        # Route used for direct http insertion of pipe messages
+        "http_route" : "dpd/views",
+
+        # Flag controlling existince of http poke endpoint
+        "http_poke_enabled" : True,
+
+        # Insert data for the demo when migrating
+        "insert_demo_migrations" : False,
+
+        # Timeout for caching of initial arguments in seconds
+        "cache_timeout_initial_arguments": 60,
+
+        # Name of view wrapping function
+        "view_decorator": None,
+
+        # Flag to control location of initial argument storage
+        "cache_arguments": True,
+
+        # Flag controlling local serving of assets
+        "serve_locally": False,
+    }
+    # Staticfiles finders for locating dash app assets and related files
+    STATICFILES_FINDERS = [
+
+        'django.contrib.staticfiles.finders.FileSystemFinder',
+        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+
+        'django_plotly_dash.finders.DashAssetFinder',
+        'django_plotly_dash.finders.DashComponentFinder',
+        'django_plotly_dash.finders.DashAppDirectoryFinder',
+    ]
+
+    # Plotly components containing static content that should
+    # be handled by the Django staticfiles infrastructure
+
+    PLOTLY_COMPONENTS = [
+
+        # Common components
+        'dash_core_components',
+        'dash_html_components',
+        'dash_renderer',
+
+        # django-plotly-dash components
+        'dpd_components',
+    ]
+
+25. In the app folder, create a new folder called "dash_app" and inside it another foder called "finished_apps". Inside it 
+a python file with the plotly app (for instance simpleexample.py)
+
+26. Now that the dash app is created, insert it in the welcome.html file (see point 22 above):
+
+    {% block content %}
+    {% load plotly_dash %}
+    <h1>Home Page</h1>
+
+    <div class = "{% plotly_class name='SimpleExample' %} card" style="height: 100%; width: 100%">
+    {% plotly_app name='SimpleExample' ratio=0.65  %}
+
+    {% endblock %}
+
+27. In the app urls.py file, import the dash app:
+    from app_one.dash_apps.finished_apps import simpleexample
+
+28. In the base.html add at the bottom of the head, but before it closes: 
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+29. Run: python manage.py makemigrations 
+         python manage.py migrate 
+        
+Up until this point, the dash app should work all fine with the django app. If you want to add an additional plotly app, follow next steps:
+
+- We will add a very very simple scatter plot:
+30. In the views.py file add:
+    from plotly.offline import plot
+    import plotly.graph_objects as go 
+
+    def home(requests):
+        def scatter():
+            x1 = [1,2,3,4,5]
+            y1 = [30,35,45,50]
+
+            trace = go.Scatter(
+                x=x1
+                y=y1
+                )
+
+            layout = dict(
+                title="Simple Graph"
+                xaxis=dict(range=[min(x1), max(x1)],
+                yaxis=dict(range=[min(y1), max(y1)])
+            )
+
+            fig = go.Figure(data=[trace], layout=layout)
+            plot_div = plot(fig, output_type='div', include_plotyjs=False)
+            return plot_div
+        
+        context ={
+            'plot1': scatter()
+        }
+        return render(request, 'app_one/welcome.html', context)
+
+
+31. In the welcome.html file add the scatter plot plot1:
+
+    {% block content %}
+    {% load plotly_dash %}
+    <h1>Home Page</h1>
+    <div class = "{% plotly_class name='SimpleExample' %} card" style="height: 100%; width: 100%">
+    {% plotly_app name='SimpleExample' ratio=0.65  %}
+
+    <br>
+    {{ plot1 | safe }}
+
+    {% endblock %}
+
+
+    
