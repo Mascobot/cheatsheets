@@ -33,7 +33,7 @@ a = ser1 + ser2 #This will match the labels and add them. So, USA will be 2.0, G
 # Also note that the result in a will be conveterted from integer to float. This to avoid loosing data in the operations.
 
 ##################
-##### DATA FRAMES:
+##### DATA FRAMES: ################################## DATA FRAMES ############################################## DATA FRAMES
 #Data Frames are just a set of Pandas Series
 
 numeros = np.random.randint(1,100, 20).reshape(5,4) #- This is just to create some random data to use. It's a matrix of 5 rows by 4 columns of total 20 random numbers from 1 to 100
@@ -64,7 +64,7 @@ print df.loc[:,"Y"]# This will get the entire column "Y"
 
 print df.iloc[[0,2,4], [1,3]]# This will get the rows with index 0, 2, 4 and the columns with index 1 and 3
 
-#######################################################################
+######################## FILTERING ################################## FILTERING ################  FILTERING
 #Conditionals:
 ## Continuation of Data Frames in Pandas. Conditionals in Data Frames:
 
@@ -109,7 +109,7 @@ D	0.188695
 E	0.190794
 
 print df[df['W']>0] # This will print the Data Frame, but just the row elements in the "W" column where the element in the row is > 0:
-    W	X	Y	Z
+    	W		X		Y		Z
 A	2.706850	0.628133	0.907969	0.503826
 B	0.651118	-0.319318	-0.848077	0.605965
 D	0.188695	-0.758872	-0.933237	0.955057
@@ -132,6 +132,16 @@ E	1.978757	0.683509
 
 print df[(df['W']>0) & (df['X']>1)] # This is to do additional conditions. Note that word "and" it will give an error. Instead, we need to use "&"
 print df[(df['W']>0) | (df['X']>1)] # This is the same as above for the OR operator. It can't use the word "or". Instead, we need to use "|"
+
+###Filter Pandas Dataframe By Values of Column:
+
+numbers_list = [0.651118, 0.190794]
+print df[df.W.isin(numbers_list)]
+
+    	W		X		Y		Z
+B	0.651118	-0.319318	-0.848077	0.605965
+E	0.190794	1.978757	2.605967	0.683509
+
 
 #To reset the index of the Data Frame to a numerical value:
 df.reset_index() # - This Resets the index to a numerical value. Note that it is not inplace and it won't save it to the original df Data Frame, If deried to save to original Data Frame: df.reset_index(inplace=True)
