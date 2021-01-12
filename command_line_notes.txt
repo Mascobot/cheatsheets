@@ -13,11 +13,14 @@ Hotkey: ctrl + r    will do a "reverse search on all commands used before in the
 
 5. mv file_1 file_2    -> this changes the name of the file 
 
-6. cp file_1 name_of_directory    ->This copies the file_1 into the directory with the name. 
+6. mv file_1 /directory -> Move file to a new directory
 
-7. rm file_1   -> This removes files. 
+7. cp file_1 /directory    ->This copies the file_1 into the directory with the name. 
 
-8. rm -r name_of_directory   -> This removes the folder and ALL its contents 
+8. rm file_1 -> This removes files. 
+
+9. rm -r name_of_directory   -> This removes the folder and ALL its contents 
+
 
 
 Reading files:
