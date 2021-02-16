@@ -1,4 +1,4 @@
 
 pip install pyinstaller
 
-pyinstaller --onefile --windowed script_name.py  -> This creates one executable file, and the "windowed" remvoves a backgorund terminal that appears 
+pyinstaller --onefile --windowed script_name.py  -> This creates one executable file, and the "--windowed" removes a background terminal that appears 
