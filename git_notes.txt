@@ -27,9 +27,18 @@ git reset --hard origin/master -> discards all local changes.
 ## Most common commands:
 
 git init
-git add .
+git add . -> it will add all the changes and files to the staging phase.
+git add <filename>  -> it will add al the changes in the filename or add a new filename
 git commit -m "my first commit"
 git remote add origin http://github... -> remote repository URL
 git remote -v -> Verifies the new remote URL
-git push origin master 
-git status  -> Returns a list of files in the local project
+git push origin master/main 
+git merge <branchname>  -> It will merge the branch name in to the main branch. (you need to be on the main branch)
+git status  -> Returns a list of files in the local project and if the have been added, commited or not.
+git checkout <hash of a previous commit> -> this goes back in the timeline to a previos commit.
+git branch  -> it will list all the branches and indicate the current branch you are in.
+git branch <name of new branch>  -> it will create a new branch
+
+
+
+
