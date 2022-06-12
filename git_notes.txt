@@ -6,7 +6,7 @@ git add <filename>  -> it will add al the changes in the filename or add a new f
 git commit -m "my first commit"
 git remote add origin http://github... -> remote repository URL
 git remote -v -> Verifies the new remote URL
-git push origin master/main 
+git push origin main 
 git merge <branchname>  -> It will merge the branch name in to the main branch. (you need to be on the main branch)
 git status  -> Returns a list of files in the local project and if the have been added, commited or not.
 git checkout <hash of a previous commit> -> this goes back in the timeline to a previos commit.
