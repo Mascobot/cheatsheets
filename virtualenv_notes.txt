@@ -1,0 +1,28 @@
+###Installation:
+
+python -m pip install --user virtualenv
+
+or 
+
+pip3 install --user virtualenv
+
+###Create new enviroment:
+
+python3 -m <enviroment_name> /path/to/new/virtual/environment_folder
+
+#This will cerate an enviroment with the python3 version install in computer.
+
+### Activate enviroment name:
+
+cd /path/to/new/virtual/environment_folder/  --> Normally this is the project folder for best practices to keep enviroment inside project folder.
+source <enviroment_name>/bin/activate
+
+### To deactivate:
+
+deactivate
+
+###Create envorent name with especific python version:
+
+cd /path/to/new/virtual/environment_folder/ --> Normally this is the project folder for best practices to keep enviroment inside project folder.
+virtualenv <enviroment_name> --python=python3.7
+
