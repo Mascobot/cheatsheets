@@ -4,7 +4,7 @@ which virtualenv
 
 ###Installation:
 
-python -m pip install --user virtualenv
+python3 -m pip install --user virtualenv
 
 or 
 
@@ -13,6 +13,9 @@ pip3 install --user virtualenv
 or 
 
 pip install virtualenv
+
+###Add to PATH (Mac):
+export PATH=$PATH:...Library/Python/3.10/bin
 
 ###Create new enviroment:
 
