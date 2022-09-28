@@ -7,7 +7,7 @@ conda create --name myenv python=3.7.4
 - To create a new enviroment from a yaml file and keep name that's in the yaml file
 conda env create -f environment.yaml
 
-- To create a new enviroment from a yaml file and with a specific name:
+- To create a new enviroment from a yaml file and with a specific/different name:
 conda env create --name NAME --file environment.yaml
 
 - To activate enviroment:
@@ -30,6 +30,9 @@ conda env remove -n myenv
 
 - To export requirements.txt file:
 conda list -e > requirements.txt
+
+- To create export a yaml file with the env requirements:
+conda env export > environment.yaml
 
 - To create a new enviroment with an existing requirements file:
 conda create -n new environment --file requirements.txt
