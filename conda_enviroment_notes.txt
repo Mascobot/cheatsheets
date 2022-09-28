@@ -4,8 +4,11 @@ conda create --name myenv
 - To create new enviroment with a specific version of python
 conda create --name myenv python=3.7.4
 
-- To create a new enviroment from a yaml file:
-conda env create --name NAME --file FILE.yaml
+- To create a new enviroment from a yaml file and keep name that's in the yaml file
+conda env create -f environment.yaml
+
+- To create a new enviroment from a yaml file and with a specific name:
+conda env create --name NAME --file environment.yaml
 
 - To activate enviroment:
 conda activate myenv
