@@ -2,7 +2,7 @@
 
 git init
 git add . -> it will add all the changes and files to the staging phase.
-git add <filename>  -> it will add al the changes in the filename or add a new filename
+git add <filename>  -> it will add all the changes in the filename or add a new filename
 git commit -m "my first commit"
 git remote add origin http://github... -> remote repository URL
 git remote -v -> Verifies the new remote URL
@@ -11,7 +11,8 @@ git merge <branchname>  -> It will merge the branch name in to the main branch. 
 git status  -> Returns a list of files in the local project and if the have been added, commited or not.
 git checkout <hash of a previous commit> -> this goes back in the timeline to a previos commit.
 git branch  -> it will list all the branches and indicate the current branch you are in.
-git branch <name of new branch>  -> it will create a new branch
+git checkout <name of existing branch>  -> it switch to another (existing) branch
+git checkout -b <new branch name>. -> this will create a new branch
 
 
 ## Reseting git:
@@ -29,13 +30,10 @@ git add . -> Add all changes and files to the local git
 git commit -m "new changes fixed" -> commits changes to local git and adds the comment 
 git status -> It tells you what branch you are in
 git push origin branchname -> pushes changes to the cloud to the branchname
-git push origin master -> pushes to the master branch 
+git push origin main -> pushes to the main branch 
 git pull -> Pulls request/file from the cloud
-git pull origin master -> Pulls request/fle from the master branch on the cloud 
-git remote add origin http://... -> Adds git to local folder from the origin branch on the link. *It needs to init git in the local folder before. 
-git checkout -b [new branch name] -> It creates a new branch and switched to it automatically 
-git checkout [branch name] -> This is to move between branches 
-git merge [newbranch name] -> merge branch to master branch. *Make sure to be on the master git branch. 
+git pull origin main -> Pulls request/fle from the master branch on the cloud 
+git merge [branch_name] -> merge branch_name to main branch. *Make sure to be on the master git branch. 
 git log -> Shows a log of the whole history of the changes 
 git log --author=marco -> Shows logs of the username 
 git log --pretty=oneline -> Shows logs in one line description (short version)
