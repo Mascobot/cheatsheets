@@ -13,6 +13,8 @@ git checkout <hash of a previous commit> -> this goes back in the timeline to a 
 git branch  -> it will list all the branches and indicate the current branch you are in.
 git checkout <name of existing branch>  -> it switch to another (existing) branch
 git checkout -b <new branch name>. -> this will create a new branch
+git --force origin <branch name> -> it will overwrite all code in remote repo (including if others commited changes)
+git --force-with-lease origin <branch name> -> safer option. I will not overwrite commits other memebers did 
 
 
 ## Reseting git:
