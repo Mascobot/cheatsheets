@@ -15,7 +15,7 @@ git checkout <name of existing branch>  -> it switch to another (existing) branc
 git checkout -b <new branch name>. -> this will create a new branch
 git --force origin <branch name> -> it will overwrite all code in remote repo (including if others commited changes)
 git --force-with-lease origin <branch name> -> safer option. I will not overwrite commits other memebers did 
-
+git clone -b <branch name> git@github.com:user/myproject.git -> this will clone a specific branch
 
 ## Reseting git:
 
