@@ -16,6 +16,9 @@ git checkout -b <new branch name>. -> this will create a new branch
 git --force origin <branch name> -> it will overwrite all code in remote repo (including if others commited changes)
 git --force-with-lease origin <branch name> -> safer option. I will not overwrite commits other memebers did 
 git clone -b <branch name> git@github.com:user/myproject.git -> this will clone a specific branch
+git fetch origin main. -> download all latest changes from remote repo, it doesn't merge those changes into your local branches.
+git pull  -> is like git fetch, but it also merges remote changes into your local branch directly.
+git fetch origin main
 
 ## Reseting git:
 
@@ -33,8 +36,6 @@ git commit -m "new changes fixed" -> commits changes to local git and adds the c
 git status -> It tells you what branch you are in
 git push origin branchname -> pushes changes to the cloud to the branchname
 git push origin main -> pushes to the main branch 
-git pull -> Pulls request/file from the cloud
-git pull origin main -> Pulls request/fle from the master branch on the cloud 
 git merge [branch_name] -> merge branch_name to main branch. *Make sure to be on the master git branch. 
 git log -> Shows a log of the whole history of the changes 
 git log --author=marco -> Shows logs of the username 
