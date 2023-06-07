@@ -1,0 +1,40 @@
+Docker file instructions:
+
+Create a Dockerfile like this:
+    #Use the official image as a parent image of python from Dockerhub:
+    FROM python:3.9
+    #create a new directory in the container. It automatically moves into it:
+    WORKDIR /fastapi-app 
+    #copying the requirements file to the new directory in the container:
+    COPY requirements.txt . 
+    #installing the requirements file:
+    RUN pip install -r requirements.txt 
+    #copying the app folder to the new directory in the container:
+    COPY ./app ./app 
+    #Run command in terminal to start the app:
+    CMD ["python", "./app/main.py"]
+
+docker build -t <name_of_docker_image> .  
+
+docker run <name_of_docker_image> 
+If you want to map the ports from the container to the "outside" world:
+docker run -p 8000:8000 <name_of_docker_image> #map the ports 
+
+If we want to list all dockers running:
+docker ps
+
+If we want to list all docker images:
+docker image ls
+
+To add a tag to a docker image:
+docker tag <name_of_docker_image>:latest <username>/<name_of_docker_image>:tag88
+
+To login and logout:
+docker login
+docker logout
+
+To push to image with tag to DockerHub:
+docker push <username>/<name_of_docker_image>:tag88    <--- this is the name of the image in DockerHub and if it doesn't exist it will create a new one as Public (default)
+
+If we want to open a terminal inside the container once it's already running:
+docker exec -it <container ID> /bin/sh 
