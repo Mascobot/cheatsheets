@@ -1,32 +1,40 @@
-On terminal:
+Docker file instructions:
 
-docker ps -a   -> Will list all docker containers in computer. 
-docker run <image name>  -> it will run the image name and create a containder with a random name from that image
-docker run --name <personal name of container> <image name>   -> Create new container with personal/custom name from image name
-docker run -it --name <my-custom-name-container> <image name> bash  -> Go inside the container with bash after running docker container
+Create a Dockerfile like this:
+    #Use the official image as a parent image of python from Dockerhub:
+    FROM python:3.9
+    #create a new directory in the container. It automatically moves into it:
+    WORKDIR /fastapi-app 
+    #copying the requirements file to the new directory in the container:
+    COPY requirements.txt . 
+    #installing the requirements file:
+    RUN pip install -r requirements.txt 
+    #copying the app folder to the new directory in the container:
+    COPY ./app ./app 
+    #Run command in terminal to start the app:
+    CMD ["python", "./app/main.py"]
 
-docker images  -> this shows all docker images downloaded in computer 
+docker build -t <name_of_docker_image> .  
 
-docker rm $(docker ps -a -f status=exited -q) -> delete all exited containers
+docker run <name_of_docker_image> 
+If you want to map the ports from the container to the "outside" world:
+docker run -p 8000:8000 <name_of_docker_image> #map the ports 
 
-To build a custom docker image, Create a file called Dockerfile:
+If we want to list all dockers running:
+docker ps
 
-In Dockerfile:
+If we want to list all docker images:
+docker image ls
 
-FROM ubuntu
-RUN apt-get upgrade && apt-get update && apt-get install -y python3
+To add a tag to a docker image:
+docker tag <name_of_docker_image>:latest mascobot/<name_of_docker_image>:marcotag88
 
-Terminal:
-docker build -t my-cutom-image-name .  -> this will create an image from that Dockerfile
+To login and logout:
+docker login
+docker logout
 
+To push to image with tag to DockerHub:
+docker push mascobot/<name_of_docker_image>:marcotag88    <--- this is the name of the image in DockerHub and if it doesn't exist it will create a new one as Public (default)
 
-
-
-
-mkdir DockerComposeFile -> create a new folder
-cd DockerComposeFile
-
-touch docker-compose.yml -> creates the docker compose YAML file 
-
-vi docker-compose.yml -> This is to edit the yaml file 
-
+If we want to open a terminal inside the container once it's already running:
+docker exec -it <container ID> /bin/sh 
