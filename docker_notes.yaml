@@ -13,12 +13,18 @@ Create a Dockerfile like this:
     COPY ./app ./app 
     #Run command in terminal to start the app:
     CMD ["python", "./app/main.py"]
-
+    
+Build Docker image:
 docker build -t <name_of_docker_image> .  
+Run docker image:
+docker run <name_of_docker_image>
 
-docker run <name_of_docker_image> 
 If you want to map the ports from the container to the "outside" world:
-docker run -p 8000:8000 <name_of_docker_image> #map the ports 
+docker run -p 8000:8000 <name_of_docker_image> #map the ports
+
+
+
+#Additional functions:
 
 If we want to list all dockers running:
 docker ps
@@ -26,7 +32,7 @@ docker ps
 If we want to list all docker images:
 docker image ls
 
-To add a tag to a docker image:
+To add a tag to a docker image for DockerHub:
 docker tag <name_of_docker_image>:latest <username>/<name_of_docker_image>:tag88
 
 To login and logout:
@@ -42,11 +48,11 @@ docker image ls
 Remove container:
 docker container rm <container_id>
 
-WARNING. Remove everything:
-docker system prune -a
-
 Remove image:
 docker image rm <image_id>
+
+WARNING. Remove everything:
+docker system prune -a
 
 To push to image with tag to DockerHub:
 docker push <username>/<name_of_docker_image>:tag88    <--- this is the name of the image in DockerHub and if it doesn't exist it will create a new one as Public (default)
