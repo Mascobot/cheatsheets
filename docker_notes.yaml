@@ -59,3 +59,6 @@ docker push <username>/<name_of_docker_image>:tag88    <--- this is the name of 
 
 If we want to open a terminal inside the container once it's already running:
 docker exec -it <container ID> /bin/sh 
+
+For adding docker into terminal path:
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
