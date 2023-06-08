@@ -33,6 +33,21 @@ To login and logout:
 docker login
 docker logout
 
+List containers:
+docker container ls -a
+
+List images:
+docker image ls
+
+Remove container:
+docker container rm <container_id>
+
+WARNING. Remove everything:
+docker system prune -a
+
+Remove image:
+docker image rm <image_id>
+
 To push to image with tag to DockerHub:
 docker push <username>/<name_of_docker_image>:tag88    <--- this is the name of the image in DockerHub and if it doesn't exist it will create a new one as Public (default)
 
