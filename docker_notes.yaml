@@ -22,7 +22,7 @@ Run docker image:
 docker run <name_of_docker_image>
 
 If you want to map the ports from the container to the "outside" world:
-docker run -p 8000:8000 <name_of_docker_image> #map the ports
+docker run -p 8501:8000 <name_of_docker_image> #map the ports: 8501 is the host port (externally facing), and 8000 is the port inside the container.
 
 
 
