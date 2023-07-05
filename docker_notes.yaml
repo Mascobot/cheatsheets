@@ -1,8 +1,8 @@
 Docker file instructions:
 
 Create a Dockerfile like this:
-    #Use the official image as a parent image of python from Dockerhub:
-    FROM python:3.9
+    #Use any of the official images as a parent image of python from Dockerhub:
+    FROM python:3.9-bullseye
     #create a new directory in the container. It automatically moves into it:
     WORKDIR /fastapi-app 
     #copying the requirements file to the new directory in the container:
@@ -16,6 +16,8 @@ Create a Dockerfile like this:
     
 Build Docker image:
 docker build -t <name_of_docker_image> .  
+or
+sudo docker build -t <name_of_docker_image> -f ./file_name.dockerfile 
 Run docker image:
 docker run <name_of_docker_image>
 
