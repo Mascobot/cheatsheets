@@ -1,3 +1,21 @@
+Docker installation on Mac:
+brew install --cask docker
+open /Applications/Docker.app
+docker --version
+
+Find the installation location:
+find /Applications/Docker.app -name docker
+
+Run Docker Using the Full Path:
+/Applications/Docker.app/Contents/Resources/bin/docker --version
+
+Add to PATH:
+export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
+
+Then, you'll need to apply the changes with:
+source ~/.zshrc
+
+###########################################################################
 Docker file instructions:
 
 Create a Dockerfile like this:
