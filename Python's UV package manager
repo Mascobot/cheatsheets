@@ -1,10 +1,9 @@
 ####Python's UV package/virtualenv manager
 
-
 # On macOS and Linux:
     curl -LsSf https://astral.sh/uv/install.sh | sh
 
-## To install a python version for the virtual enviroment:
+## To install a python version for the virtual enviroment and uv:
 
     uv python install 3.12.16
 
@@ -14,9 +13,13 @@
 
 ## To run the desired python version:
 
-Update the .toml (used in uv) file to the desired version (for example requires-python = ">=3.12") and then in CLI:
+    uv python pin 3.12.16  (this will update the uv .python-version file, which is used to selected the exact version for uv and the virtual env)
 
-    uv python pin 3.12.16  (this will only update the uv .python-version file, which is used to selected the exact version for uv)
+    After that, run:
+
+    uv sync (this will update also the python version of the virtual enviroment) or just run the app: uv run main.py and will automatically update.
+
+*If necessary, update the .toml file to the desired version, making sure is at least ">=" (for example requires-python = ">=3.12").
 
 ## To create a virtualenv:
 
