@@ -53,6 +53,11 @@
 
     uv run hello.py
 
+## To check for linter issues:
+
+    uvx run ruff check
+    uvx run ruff check --fix
+
 ## To sync uv for new (manually typed) dependencies:
 
     uv sync
