@@ -2,11 +2,11 @@
 
 
 # On macOS and Linux:
-curl -LsSf https://astral.sh/uv/install.sh | sh
+    curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ## To install a python version in the enviroment:
 
-uv python install 3.12.16
+    uv python install 3.12.16
 
 ## To list all python versions installed and avaiable to download:
 
@@ -16,15 +16,15 @@ uv python install 3.12.16
 
 Update the .toml file to the desired version (for example requires-python = ">=3.12") and then in CLI:
 
-uv python pin 3.12.16
+    uv python pin 3.12.16
 
 ## To create a virtualenv:
 
-uv venv --python 3.12.16
+    uv venv --python 3.12.16
 
 ## To activate the virtual enviroment:
 
-source .venv/bin/activate
+    source .venv/bin/activate
 
 ## To uv can update itself to the latest version:
 
