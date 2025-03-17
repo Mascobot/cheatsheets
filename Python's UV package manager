@@ -20,7 +20,7 @@ Update the .toml (used in uv) file to the desired version (for example requires-
 
 ## To create a virtualenv:
 
-    uv venv --python 3.12.16
+    uv venv --python 3.12.16 (ideally with the same version in uv's .python-version file for consitency)
 
 ## To activate the local virtual enviroment:
 
