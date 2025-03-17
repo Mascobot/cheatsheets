@@ -14,9 +14,9 @@
 
 ## To run the desired python version:
 
-Update the .toml file to the desired version (for example requires-python = ">=3.12") and then in CLI:
+Update the .toml (used in uv) file to the desired version (for example requires-python = ">=3.12") and then in CLI:
 
-    uv python pin 3.12.16  (this will only update the uv .python-version file)
+    uv python pin 3.12.16  (this will only update the uv .python-version file, which is used to selected the exact version for uv)
 
 ## To create a virtualenv:
 
