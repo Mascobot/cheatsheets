@@ -13,25 +13,13 @@
 
 ## To run the desired python version:
 
-    uv python pin 3.12.16  (this will update the uv .python-version file, which is used to selected the exact version for uv and the virtual env)
+    uv python pin 3.12.16  (this will update the uv .python-version file, which is used to select the exact version for uv and the virtual env)
 
     After that, run:
 
     uv sync (this will update also the python version of the virtual enviroment) or just run the app: uv run main.py and will automatically update.
 
 *If necessary, update the .toml file to the desired version, making sure is at least ">=" (for example requires-python = ">=3.12").
-
-## To create a virtualenv:
-
-    uv venv --python 3.12.16 (ideally with the same version in uv's .python-version file for consitency)
-
-## To activate the local virtual enviroment:
-
-    source .venv/bin/activate
-
-## To uv can update itself to the latest version:
-
-    uv self update
 
 ##To start a new project:
 
@@ -48,6 +36,22 @@
 ## To start a new app:
 
     uv init --app
+
+## To create a virtualenv:
+
+    uv add <python_package> -> it automatically created an env
+
+    or:
+
+    uv venv --python 3.12.16 (ideally with the same version in uv's .python-version file for consitency)
+
+## To activate the local virtual enviroment:
+
+    source .venv/bin/activate
+
+## To uv can update itself to the latest version:
+
+    uv self update
 
 ## To run the python file (this will install the dependencies too):
 
